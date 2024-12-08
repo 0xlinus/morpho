@@ -12,7 +12,7 @@ export const baseActionClient = createSafeActionClient({
   handleServerError(e, utils) {
     const { clientInput, bindArgsClientInputs, metadata, ctx } = utils;
 
-    console.error({ clientInput, bindArgsClientInputs, ctx, error: e }, `Server error during ${metadata.actionName} action`)
+    console.warn({ clientInput, bindArgsClientInputs, ctx, error: e }, `Server error during ${metadata.actionName} action`)
 
     if (e instanceof NotFoundError || e instanceof InvalidAddressError) {
       return e.message

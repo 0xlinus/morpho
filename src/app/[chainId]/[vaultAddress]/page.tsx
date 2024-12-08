@@ -1,9 +1,10 @@
-import { getVaultAction } from '@/actions/vaults'
-import Vault from '@/sections/vault/Vault'
+import LoadingVault from '@/sections/vault/LoadingVault'
 import { notFound } from 'next/navigation'
 import { isAddress } from 'viem'
+import { Suspense } from 'react'
+import VaultContent from '@/sections/vault/VaultPageContent'
 
-type VaultPageProps = {
+export type VaultPageProps = {
 	params: {
 		chainId: string
 		vaultAddress: string
@@ -11,19 +12,19 @@ type VaultPageProps = {
 }
 
 const VaultPage = async ({ params }: VaultPageProps) => {
-	const { chainId, vaultAddress } = await params
+	const { chainId, vaultAddress } = params
 
 	if (!isAddress(vaultAddress) || !chainId) {
 		return notFound()
 	}
 
-	const result = await getVaultAction({ chainId, address: vaultAddress })
-
-	if (!result?.data) {
-		return notFound()
-	}
-
-	return <Vault vault={result.data} />
+	return (
+		<Suspense fallback={<LoadingVault />}>
+			<VaultContent params={params} />
+		</Suspense>
+	)
 }
+
+
 
 export default VaultPage
