@@ -12,6 +12,7 @@ interface SearchProps {
 	placeholder?: string
 	debounceMs?: number
 	label?: string
+	error?: string
 }
 
 const Search: React.FC<SearchProps> = ({
@@ -20,7 +21,8 @@ const Search: React.FC<SearchProps> = ({
 	onSearch,
 	placeholder = 'Search...',
 	debounceMs = 300,
-	label
+	label,
+	error
 }) => {
 	const [value, setValue] = useState('')
 
@@ -47,6 +49,7 @@ const Search: React.FC<SearchProps> = ({
 				isLoading={isLoading}
 				placeholder={placeholder}
 				isValid={results?.length > 0}
+				error={error}
 			/>
 
 			<div
@@ -61,7 +64,7 @@ const Search: React.FC<SearchProps> = ({
 					}
 				`}
 			>
-				<Card className='border-borderPrimary border-[1px] min-w-0'>
+				<Card className='border-borderPrimary border-[1px] min-w-0 max-w-[310px]'>
 					<Card.Body className='max-h-[300px] overflow-y-auto'>
 						{results.map((result, index) => (
 							<div

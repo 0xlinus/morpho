@@ -9,7 +9,7 @@ import {
 
 function makeClient() {
 	const httpLink = new HttpLink({
-		uri: process.env.MORPHO_BACKEND_URL
+		uri: process.env.NEXT_PUBLIC_MORPHO_BACKEND_URL
 	})
 
 	return new ApolloClient({
