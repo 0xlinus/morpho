@@ -27,7 +27,12 @@ export default {
         inputBorderError: 'var(--input-border-error)',
         inputBorderValid: 'var(--input-border-valid)',
         inputErrorMessage: 'var(--input-error-message)',
-        card: 'var(--card)'
+        card: 'var(--card)',
+        buttonPrimary: 'var(--button-primary)',
+        buttonPrimaryHover: 'var(--button-primary-hover)',
+        buttonPrimaryFocus: 'var(--button-primary-focus)',
+        buttonPrimaryProgress: 'var(--button-primary-progress)',
+        buttonPrimaryDisabled: 'var(--button-primary-disabled)'
       }
     }
   },

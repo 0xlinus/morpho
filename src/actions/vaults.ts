@@ -6,6 +6,7 @@ import { query } from '@/lib/client';
 import { baseActionClient } from '@/lib/safe-actions';
 import { vaultQuery, vaultSearchByFullAddressQuery, vaultSearchByNameQuery } from '@/queries/vault';
 import { VaultFull, VaultSearchResult, VaultSearchResultFull } from '@/types/vaults';
+import { revalidatePath } from 'next/dist/server/web/spec-extension/revalidate';
 import { isAddress } from 'viem';
 import { z } from 'zod';
 
@@ -62,4 +63,11 @@ export const getVaultAction = baseActionClient
       state: vault.state,
       image: vault.metadata.image
     } as VaultFull
+  })
+
+export const refreshVaultAction = baseActionClient
+  .schema(ZGetVaultAction)
+  .metadata({ actionName: 'refreshVault' })
+  .action(async ({ parsedInput: { chainId, address } }) => {
+    revalidatePath(`/${chainId}/${address}`)
   })

@@ -14,7 +14,7 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				primary:
-					'bg-primary text-background hover:opacity-80 transition ease-out duration-500 font-semibold',
+					'bg-buttonPrimary text-background hover:bg-buttonPrimaryHover transition ease-out duration-500 font-semibold focus:bg-buttonPrimaryFocus disabled:bg-buttonPrimaryDisabled rounded-3xl',
 				light:
 					'bg-bgButtonLight text-[#191D20F2] rounded-[3px] pr-[2px] pl-[8px] py-[3px] flex flex-row items-center h-[26px] leading-[16px]'
 			},

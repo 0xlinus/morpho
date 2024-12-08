@@ -13,9 +13,12 @@ const Header = () => {
 					alt='Logo'
 					className='h-6'
 				/>
-				<span className='text-[13px] text-textPrimary leading-[16px]'>
+				<Link
+					href='/'
+					className='text-[13px] text-textPrimary leading-[16px] cursor-pointer'
+				>
 					Morpho Test
-				</span>
+				</Link>
 			</div>
 			<Button
 				variant='light'

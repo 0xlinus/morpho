@@ -1,4 +1,5 @@
 import { getVaultAction } from '@/actions/vaults'
+import Vault from '@/sections/vault/Vault'
 import { notFound } from 'next/navigation'
 import { isAddress } from 'viem'
 
@@ -18,16 +19,11 @@ const VaultPage = async ({ params }: VaultPageProps) => {
 
 	const result = await getVaultAction({ chainId, address: vaultAddress })
 
-  if(!result?.data) {
-    return notFound()
-  }
+	if (!result?.data) {
+		return notFound()
+	}
 
-	return (
-		<div>
-			<p>Chain ID: {chainId}</p>
-			<p>Vault Address: {vaultAddress}</p>
-		</div>
-	)
+	return <Vault vault={result.data} />
 }
 
 export default VaultPage
