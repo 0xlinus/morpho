@@ -1,27 +1,25 @@
 'use server'
 
 import { query } from '@/lib/client';
-import { gql } from '@apollo/client';
+import { vaultSearchByFullAddressQuery, vaultSearchByNameQuery } from '@/queries/vault';
+import { Vault } from '@/types/vaults';
+import { isAddress } from 'viem';
 
-const QUERY = gql`
-  query VaultSearchByFullAddress($addresses: [String!]) {
-    vaults(first: 10, where: { whitelisted: true, address_in: $addresses }) {
-      items {
-        address
-        chain {
-          id
-        }
-        metadata {
-          image
-        }
-        name
-      }
-    }
+export async function getVaults(q: string) {
+  let vaults: Vault[] = []
+
+  if (!q) return []
+  if (isAddress(q)) {
+    const { data } = await query({ query: vaultSearchByFullAddressQuery, variables: { addresses: [q] } })
+    vaults = data?.vaults.items as Vault[]
+  } else {
+    const { data } = await query({ query: vaultSearchByNameQuery, variables: { search: q } })
+    vaults = data?.vaults.items as Vault[]
   }
-`
 
-export async function getVaults(addresses: string[]) {
-  const { data } = await query({ query: QUERY, variables: { addresses } })
-  return data?.vaults.items
+  if (!vaults.length) {
+    throw new Error('No vaults found')
+  }
+
+  return vaults
 }
-

@@ -13,9 +13,9 @@ export default function Home() {
 		error
 	} = useQuery({
 		queryKey: ['vaults', searchValue],
-		queryFn: () => getVaults([searchValue])
+		queryFn: () => getVaults(searchValue),
+		retry: false
 	})
-
 	return (
 		<div className='flex flex-col items-center justify-center h-screen'>
 			<Card className='h-[160px]'>

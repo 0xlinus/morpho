@@ -4,9 +4,10 @@ import Input from '@/components/Input'
 import Card from '@/components/Card'
 import React, { useState, useCallback } from 'react'
 import debounce from 'lodash/debounce'
+import { Vault } from '@/types/vaults'
 
 interface SearchProps {
-	results?: any[] // Replace 'any' with your result type
+	results?: Vault[]
 	isLoading?: boolean
 	onSearch?: (value: string) => void
 	placeholder?: string
@@ -64,7 +65,7 @@ const Search: React.FC<SearchProps> = ({
 					}
 				`}
 			>
-				<Card className='border-borderPrimary border-[1px] min-w-0 max-w-[310px]'>
+				<Card className='border-borderPrimary border-[1px] min-w-[310px] max-w-[310px]'>
 					<Card.Body className='max-h-[300px] overflow-y-auto'>
 						{results.map((result, index) => (
 							<div
