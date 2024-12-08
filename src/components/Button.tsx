@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority'
 type ButtonProps = {
 	iconRight?: React.ReactNode
 	variant?: 'light' | 'primary'
-	size?: 'default' | 'md'
+	size?: 'default' | 'md' | 'circle'
 	className?: string
 	children?: React.ReactNode
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
@@ -19,8 +19,9 @@ const buttonVariants = cva(
 					'bg-bgButtonLight text-[#191D20F2] rounded-[3px] pr-[2px] pl-[8px] py-[3px] flex flex-row items-center h-[26px] leading-[16px]'
 			},
 			size: {
-				default: 'h-10 px-4 py-2',
-				md: 'h-11 rounded-md px-8 text-[11px] font-medium'
+				default: 'h-[32px] px-4 py-2',
+				md: 'h-11 rounded-md px-8 text-[11px] font-medium',
+				circle: 'w-[48px] h-[48px] p-0'
 			}
 		},
 		defaultVariants: {

@@ -15,10 +15,7 @@ const RefreshButton = () => {
 	}
 
 	return (
-		<Button 
-			className='w-[48px] h-[48px] p-0'
-			onClick={handleRefresh}
-		>
+		<Button size='circle' onClick={handleRefresh}>
 			<Image
 				src='/images/icons/double-arrow.svg'
 				alt='Refresh'
