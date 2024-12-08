@@ -32,7 +32,8 @@ export default {
         buttonPrimaryHover: 'var(--button-primary-hover)',
         buttonPrimaryFocus: 'var(--button-primary-focus)',
         buttonPrimaryProgress: 'var(--button-primary-progress)',
-        buttonPrimaryDisabled: 'var(--button-primary-disabled)'
+        buttonPrimaryDisabled: 'var(--button-primary-disabled)',
+        rowHover: 'var(--row-hover)'
       }
     }
   },

@@ -25,6 +25,7 @@
 	--button-primary-focus: #2973ffd9;
 	--button-primary-progress: #2470ffbf;
 	--button-primary-disabled: #2470ff66;
+	--row-hover: #ebedf5;
 }
 
 @media (prefers-color-scheme: light) {

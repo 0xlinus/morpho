@@ -14,7 +14,8 @@ const SearchVault = () => {
 	const { data: vaultsResult, isLoading } = useQuery({
 		queryKey: ['vaults', searchValue],
 		queryFn: () => getVaultsAction({ q: searchValue }),
-		retry: false
+		retry: false,
+		enabled: !!searchValue || !!error
 	})
 
 	const vaults = useMemo(() => {
@@ -32,8 +33,8 @@ const SearchVault = () => {
 	}, [vaultsResult])
 
 	return (
-		<Card className='h-[160px]'>
-			<Card.Body className='h-full flex justify-center items-center p-6'>
+		<Card className='h-[160px] w-[350px]'>
+			<Card.Body className='h-full flex justify-center items-center p-6 px-0'>
 				<Search
 					placeholder='Search...'
 					label='Vault Address or Name'

@@ -18,16 +18,17 @@ const VaultsList = ({ vaults }: VaultsListProps) => {
 					<Link
 						key={index}
 						href={`/${vault.chainId}/${vault.address}`}
-						className='flex justify-between items-center cursor-pointer transition-colors duration-150 ease-in-out w-full py-2 hover:text-textSecondary group'
+						className='flex justify-between items-center cursor-pointer hover:cursor-pointer transition-colors duration-150 ease-in-out w-full py-2 hover:bg-rowHover px-4 group rounded-xl'
 					>
-						<div className='flex items-center gap-2'>
+						<div className='flex items-center gap-2 cursor-pointer'>
 							<Image
 								src={vault.image}
 								alt={vault.name}
 								width={24}
 								height={24}
+								className='cursor-pointer'
 							/>
-							<div className='text-textPrimary text-[13px] group-hover:text-black transition-colors duration-150 ease-in-out'>
+							<div className='text-textPrimary text-[13px] cursor-pointer'>
 								{vault.name}
 							</div>
 						</div>
@@ -36,6 +37,7 @@ const VaultsList = ({ vaults }: VaultsListProps) => {
 							alt='arrow-right'
 							width={10}
 							height={10}
+							className='cursor-pointer'
 						/>
 					</Link>
 				))}

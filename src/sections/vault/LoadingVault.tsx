@@ -2,7 +2,7 @@ import Card from '@/components/Card'
 
 const LoadingVault = () => {
 	return (
-		<Card className='min-w-[365px] p-6'>
+		<Card className='min-w-[365px] p-6 h-[485px]'>
 			<Card.Header>
 				<div className='flex flex-row gap-6 items-center justify-start'>
 					<div className='w-[80px] h-[80px] rounded-full bg-gray-200 animate-pulse' />

@@ -27,11 +27,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 							'h-[36px] w-full rounded-md pl-4 py-2 pr-8',
 							'bg-input transition-colors',
 							'border border-transparent',
-							'focus:outline-none focus:ring-1 focus:border-inputBorderFocus focus:ring-inputBorderFocus',
-							error &&
-								'border-inputBorderError text-textError placeholder:text-textError',
+							'focus:outline-none focus:ring-1',
+							error
+								? 'border-inputBorderError text-textError placeholder:text-textError focus:border-inputBorderError focus:ring-inputBorderError'
+								: isValid
+								? 'border-inputBorderValid border-[0.5px] focus:border-inputBorderValid focus:ring-inputBorderValid'
+								: 'focus:border-inputBorderFocus focus:ring-inputBorderFocus',
 							isLoading && 'pr-10',
-							isValid && 'border-inputBorderValid border-[0.5px]',
 							className
 						)}
 						{...props}

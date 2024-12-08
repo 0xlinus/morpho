@@ -12,9 +12,9 @@ const Vault = ({ vault }: { vault?: VaultFull }) => {
 	}
 
 	return (
-		<Card className='min-w-[365px] p-6'>
+		<Card className='min-w-[365px] p-6 h-[485px]'>
 			<Card.Header>
-				<div className='flex flex-row gap-6 items-center justify-start'>
+				<div className='flex flex-row gap-5 items-center justify-start'>
 					<Image src={vault.image} alt={vault.name} width={80} height={80} />
 					<div className='flex flex-col gap-2'>
 						<div className='text-[18px] font-medium text-black'>
