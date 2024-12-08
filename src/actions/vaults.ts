@@ -4,8 +4,8 @@ import { InvalidAddressError } from '@/errors/InvalidAddress';
 import { NotFoundError } from '@/errors/NotFound';
 import { query } from '@/lib/client';
 import { baseActionClient } from '@/lib/safe-actions';
-import { vaultSearchByFullAddressQuery, vaultSearchByNameQuery } from '@/queries/vault';
-import { VaultSearchResult } from '@/types/vaults';
+import { vaultQuery, vaultSearchByFullAddressQuery, vaultSearchByNameQuery } from '@/queries/vault';
+import { VaultFull, VaultSearchResult, VaultSearchResultFull } from '@/types/vaults';
 import { isAddress } from 'viem';
 import { z } from 'zod';
 
@@ -43,4 +43,23 @@ export const getVaultsAction = baseActionClient
       image: vault.metadata.image,
       chainId: vault.chain.id
     }))
+  })
+
+const ZGetVaultAction = z.object({
+  chainId: z.string(),
+  address: z.string()
+})
+
+export const getVaultAction = baseActionClient
+  .schema(ZGetVaultAction)
+  .metadata({ actionName: 'getVault' })
+  .action(async ({ parsedInput: { chainId, address } }) => {
+    const { data } = await query({ query: vaultQuery, variables: { address, chainId: parseInt(chainId) } })
+    const vault = data?.vaultByAddress as VaultSearchResultFull
+    return {
+      curators: vault.metadata.curators.map((curator: { name: string }) => curator.name),
+      name: vault.name,
+      state: vault.state,
+      image: vault.metadata.image
+    } as VaultFull
   })

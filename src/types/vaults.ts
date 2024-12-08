@@ -26,3 +26,19 @@ export type VaultSearchResult = {
   }
   name: string
 }
+
+export type VaultSearchResultFull = {
+  metadata: {
+    image: string
+    curators: {
+      name: string
+    }[]
+  }
+  name: string
+  state: {
+    owner: string
+    totalAssetsUsd: number
+    netApy: number
+  }
+}
+

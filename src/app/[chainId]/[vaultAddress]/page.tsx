@@ -1,3 +1,4 @@
+import { getVaultAction } from '@/actions/vaults'
 import { notFound } from 'next/navigation'
 import { isAddress } from 'viem'
 
@@ -9,11 +10,17 @@ type VaultPageProps = {
 }
 
 const VaultPage = async ({ params }: VaultPageProps) => {
-	const { chainId, vaultAddress } = params
+	const { chainId, vaultAddress } = await params
 
 	if (!isAddress(vaultAddress) || !chainId) {
 		return notFound()
 	}
+
+	const result = await getVaultAction({ chainId, address: vaultAddress })
+
+  if(!result?.data) {
+    return notFound()
+  }
 
 	return (
 		<div>

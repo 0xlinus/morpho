@@ -33,3 +33,22 @@ export const vaultSearchByNameQuery = gql`
     }
   }
 `
+
+export const vaultQuery = gql`
+  query VaultData($address: String!, $chainId: Int!) {
+    vaultByAddress(address: $address, chainId: $chainId) {
+      metadata {
+        image
+        curators {
+          name
+        }
+      }
+      name
+      state {
+        owner
+        totalAssetsUsd
+        netApy
+      }
+    }
+  }
+`
