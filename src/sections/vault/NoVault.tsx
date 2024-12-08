@@ -1,10 +1,14 @@
 import Card from '@/components/Card'
+import Error from '@/shared/layout/Error'
 
 const NoVault = () => {
 	return (
-		<Card>
+		<Card className='w-[365px] h-[435px]'>
 			<Card.Body>
-				<p>No vault found</p>
+				<Error
+					title='Oops!'
+					message='Something went wrong, please try again.'
+				/>
 			</Card.Body>
 		</Card>
 	)

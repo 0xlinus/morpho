@@ -32,10 +32,16 @@ const Vault = ({ vault }: { vault?: VaultFull }) => {
 						Total Supply (USD)
 					</div>
 					<div className='text-[15px] text-textSecondary'>
-						{new Intl.NumberFormat('en-US', {
-							style: 'currency',
-							currency: 'USD'
-						}).format(vault.state.totalAssetsUsd)}
+						{(() => {
+							const value = vault.state.totalAssetsUsd
+							if (value >= 1_000_000) {
+								return `$${(value / 1_000_000).toFixed(2)}M`
+							}
+							return new Intl.NumberFormat('en-US', {
+								style: 'currency',
+								currency: 'USD'
+							}).format(value)
+						})()}
 					</div>
 				</div>
 				<div className='flex flex-col gap-2'>
