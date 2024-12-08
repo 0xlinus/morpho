@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Header = () => {
 	return (
-		<div className='flex flex-row h-[50px] py-3 px-10 items-center justify-between border-b border-borderPrimary'>
+		<div className='flex flex-row h-[50px] py-3 px-10 items-center justify-between border-b border-borderPrimary absolute top-0 left-0 right-0'>
 			<div className='flex flex-row items-center w-[134px] justify-between'>
 				<Image
 					src='/images/logo.svg'
