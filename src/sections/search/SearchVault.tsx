@@ -32,21 +32,19 @@ const SearchVault = () => {
 	}, [vaultsResult])
 
 	return (
-		<div className='flex flex-col items-center justify-center h-screen'>
-			<Card className='h-[160px]'>
-				<Card.Body>
-					<Search
-						placeholder='Search...'
-						label='Vault Address or Name'
-						onSearch={setSearchValue}
-						results={vaults}
-						isLoading={isLoading}
-						error={error}
-						resultRenderer={(results) => <VaultsList vaults={results} />}
-					/>
-				</Card.Body>
-			</Card>
-		</div>
+		<Card className='h-[160px]'>
+			<Card.Body className='h-full flex justify-center items-center'>
+				<Search
+					placeholder='Search...'
+					label='Vault Address or Name'
+					onSearch={setSearchValue}
+					results={vaults}
+					isLoading={isLoading}
+					error={error}
+					resultRenderer={(results) => <VaultsList vaults={results} />}
+				/>
+			</Card.Body>
+		</Card>
 	)
 }
 

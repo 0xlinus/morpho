@@ -43,7 +43,7 @@ const Search: React.FC<SearchProps<Vault>> = ({
 	}
 
 	return (
-		<div className='relative w-full min-w-[310px]'>
+		<div className='relative w-[310px]'>
 			<Input
 				label={label}
 				value={value}
@@ -60,11 +60,14 @@ const Search: React.FC<SearchProps<Vault>> = ({
 
 			<div
 				id='results'
+				style={{
+					marginTop: !error ? '-16px' : '6px'
+				}}
 				className={`
-          absolute mt-[-16px] z-50
+          absolute z-50
 					transition-all duration-200 ease-in-out
 					${
-						results.length > 0
+						results.length > 0 || !!error
 							? 'opacity-100 translate-y-0'
 							: 'opacity-0 -translate-y-2 pointer-events-none'
 					}

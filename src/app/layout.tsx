@@ -27,7 +27,9 @@ export default function RootLayout({
 				<QueryProvider>
 					<ApolloWrapper>
 						<Header />
-						{children}
+						<main className='flex flex-col justify-center items-center mx-auto px-4 h-screen'>
+							{children}
+						</main>
 					</ApolloWrapper>
 				</QueryProvider>
 			</body>

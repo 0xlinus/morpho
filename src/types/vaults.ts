@@ -15,3 +15,14 @@ export type VaultFull = Vault & {
   curators: string[]
   state: VaultState
 }
+
+export type VaultSearchResult = {
+  address: string
+  chain: {
+    id: string
+  }
+  metadata: {
+    image: string
+  }
+  name: string
+}

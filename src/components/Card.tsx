@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> & {
 	return (
 		<div
 			className={cn(
-				'flex flex-col justify-center items-center bg-card rounded-2xl shadow-lg shadow-black/3 min-w-[365px] p-5',
+				'flex flex-col justify-center items-center bg-card rounded-2xl shadow-lg shadow-black/3',
 				className
 			)}
 		>
