@@ -3,6 +3,7 @@ import './globals.css'
 import Header from '@/shared/layout/Header'
 
 import { Inter } from 'next/font/google'
+import { ApolloWrapper } from '@/lib/ApolloWrapper'
 
 const inter = Inter({
 	subsets: ['latin'],
@@ -22,8 +23,10 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={`${inter.className} antialiased`}>
-				<Header />
-				{children}
+				<ApolloWrapper>
+					<Header />
+					{children}
+				</ApolloWrapper>
 			</body>
 		</html>
 	)
