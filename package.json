@@ -16,10 +16,12 @@
     "clsx": "^2.1.1",
     "lodash": "^4.17.21",
     "next": "15.0.4",
+    "next-safe-action": "^7.9.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.5.5",
-    "viem": "^2.21.54"
+    "viem": "^2.21.54",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.13",

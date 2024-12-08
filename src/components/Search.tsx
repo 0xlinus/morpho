@@ -51,12 +51,16 @@ const Search: React.FC<SearchProps> = ({
 				placeholder={placeholder}
 				isValid={results?.length > 0}
 				error={error}
+				maxLength={45}
+				onBlur={() => {
+					debouncedSearch('')
+				}}
 			/>
 
 			<div
 				id='results'
 				className={`
-          absolute mt-[8px] z-50
+          absolute mt-[-16px] z-50
 					transition-all duration-200 ease-in-out
 					${
 						results.length > 0
