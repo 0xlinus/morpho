@@ -1,6 +1,7 @@
 import Card from '@/components/Card'
 import { Vault } from '@/types/vaults'
 import Image from 'next/image'
+import Link from 'next/link'
 
 type VaultsListProps = {
 	vaults: Vault[]
@@ -14,8 +15,9 @@ const VaultsList = ({ vaults }: VaultsListProps) => {
 					<p className='text-center text-textSecondary'>No results :(</p>
 				)}
 				{vaults.map((vault, index) => (
-					<div
+					<Link
 						key={index}
+						href={`/${vault.chainId}/${vault.address}`}
 						className='flex justify-between items-center cursor-pointer transition-colors duration-150 ease-in-out w-full py-2 hover:text-textSecondary group'
 					>
 						<div className='flex items-center gap-2'>
@@ -35,7 +37,7 @@ const VaultsList = ({ vaults }: VaultsListProps) => {
 							width={10}
 							height={10}
 						/>
-					</div>
+					</Link>
 				))}
 			</Card.Body>
 		</Card>
