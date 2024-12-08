@@ -1,5 +1,6 @@
 'use server'
 
+import { InvalidAddressError } from '@/errors/InvalidAddress';
 import { NotFoundError } from '@/errors/NotFound';
 import { query } from '@/lib/client';
 import { baseActionClient } from '@/lib/safe-actions';
@@ -20,6 +21,10 @@ export const getVaultsAction = baseActionClient
 
     let vaults: VaultSearchResult[] = []
 
+    if (q.startsWith('0x') && !isAddress(q)) {
+      throw new InvalidAddressError()
+    }
+
     if (isAddress(q)) {
       const { data } = await query({ query: vaultSearchByFullAddressQuery, variables: { addresses: [q] } })
       vaults = data?.vaults.items
@@ -29,7 +34,7 @@ export const getVaultsAction = baseActionClient
     }
 
     if (!vaults.length) {
-      throw new NotFoundError('Vault')
+      throw new NotFoundError(`No vault found for this ${isAddress(q) ? 'address' : 'name'}.`)
     }
 
     return vaults.map((vault: VaultSearchResult) => ({

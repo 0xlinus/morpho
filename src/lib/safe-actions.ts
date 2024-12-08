@@ -1,3 +1,4 @@
+import { InvalidAddressError } from '@/errors/InvalidAddress';
 import { NotFoundError } from '@/errors/NotFound';
 import { createSafeActionClient, DEFAULT_SERVER_ERROR_MESSAGE } from "next-safe-action";
 import { z } from "zod";
@@ -13,7 +14,7 @@ export const baseActionClient = createSafeActionClient({
 
     console.error({ clientInput, bindArgsClientInputs, ctx, error: e }, `Server error during ${metadata.actionName} action`)
 
-    if (e instanceof NotFoundError) {
+    if (e instanceof NotFoundError || e instanceof InvalidAddressError) {
       return e.message
     }
 

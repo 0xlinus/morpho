@@ -1,6 +1,6 @@
 export class NotFoundError extends Error {
-  constructor(resource: string) {
-    super(`${resource} not found`);
+  constructor(message: string) {
+    super(message);
     this.name = 'NotFoundError';
 
     if (Error.captureStackTrace) {
