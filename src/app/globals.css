@@ -6,8 +6,20 @@
 	--background: #ebedf5;
 	--border-primary: #434c5326;
 	--bg-button-light: #191d200f;
+	--card: #fafcff;
 	--foreground: #171717;
-	--body: #191d20f2;
+	--text-primary: #191d20f2;
+	--text-secondary: #434c53b2;
+	--text-disabled: #434c5366;
+	--text-error: #c73e59f2;
+	--input: #191d2008;
+	--input-hover: #191d2014;
+	--input-focus: #191d201a;
+	--input-error: #191d2008;
+	--input-border-focus: #5792ffa6;
+	--input-border-error: #c73e59a6;
+	--input-border-valid: #39a699;
+	--input-error-message: #c73e59f2;
 }
 
 @media (prefers-color-scheme: light) {

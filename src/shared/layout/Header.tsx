@@ -13,7 +13,7 @@ const Header = () => {
 					alt='Logo'
 					className='h-6'
 				/>
-				<span className='text-[13px] text-body leading-[16px]'>
+				<span className='text-[13px] text-textPrimary leading-[16px]'>
 					Morpho Test
 				</span>
 			</div>

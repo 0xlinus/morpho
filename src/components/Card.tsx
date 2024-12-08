@@ -11,7 +11,6 @@ interface CardCompositionProps {
 	className?: string
 }
 
-// Card Header Component
 const Header: React.FC<CardCompositionProps> = ({ children, className }) => {
 	return (
 		<div className={cn('p-4 border-b border-borderPrimary', className)}>
@@ -28,7 +27,6 @@ const Footer: React.FC<CardCompositionProps> = ({ children }) => {
 	return <div className='p-4 border-t'>{children}</div>
 }
 
-// Main Card Component
 const Card: React.FC<CardProps> & {
 	Header: typeof Header
 	Body: typeof Body
@@ -37,7 +35,7 @@ const Card: React.FC<CardProps> & {
 	return (
 		<div
 			className={cn(
-				'bg-white rounded-2xl shadow-lg shadow-black/3 min-w-[365px] p-5',
+				'flex flex-col justify-center items-center bg-card rounded-2xl shadow-lg shadow-black/3 min-w-[365px] p-5',
 				className
 			)}
 		>

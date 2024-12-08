@@ -14,7 +14,19 @@ export default {
         foreground: 'var(--foreground)',
         borderPrimary: 'var(--border-primary)',
         bgButtonLight: 'var(--bg-button-light)',
-        body: 'var(--body)'
+        textPrimary: 'var(--text-primary)',
+        textSecondary: 'var(--text-secondary)',
+        textDisabled: 'var(--text-disabled)',
+        textError: 'var(--text-error)',
+        input: 'var(--input)',
+        inputHover: 'var(--input-hover)',
+        inputFocus: 'var(--input-focus)',
+        inputError: 'var(--input-error)',
+        inputBorderFocus: 'var(--input-border-focus)',
+        inputBorderError: 'var(--input-border-error)',
+        inputBorderValid: 'var(--input-border-valid)',
+        inputErrorMessage: 'var(--input-error-message)',
+        card: 'var(--card)'
       }
     }
   },
