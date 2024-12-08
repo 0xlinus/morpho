@@ -6,11 +6,12 @@ import { VaultPageProps } from '@/app/[chainId]/[vaultAddress]/page'
 
 const VaultContent = async ({ params }: VaultPageProps) => {
 	let vault: VaultFull | undefined
+	const { chainId, vaultAddress } = await params
 
 	try {
 		const result = await getVaultAction({
-			chainId: params.chainId,
-			address: params.vaultAddress
+			chainId,
+			address: vaultAddress
 		})
 
 		if (!result?.data) {

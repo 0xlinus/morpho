@@ -5,14 +5,14 @@ import { Suspense } from 'react'
 import VaultContent from '@/sections/vault/VaultPageContent'
 
 export type VaultPageProps = {
-	params: {
+	params: Promise<{
 		chainId: string
 		vaultAddress: string
-	}
+	}>
 }
 
 const VaultPage = async ({ params }: VaultPageProps) => {
-	const { chainId, vaultAddress } = params
+	const { chainId, vaultAddress } = await params
 
 	if (!isAddress(vaultAddress) || !chainId) {
 		return notFound()
