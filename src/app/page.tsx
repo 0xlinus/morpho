@@ -40,6 +40,21 @@ export default function Home() {
 						results={vaults}
 						isLoading={isLoading}
 						error={error}
+						resultRenderer={(results) => (
+							<Card className='border-borderPrimary border-[1px] min-w-[310px] max-w-[310px]'>
+								<Card.Body className='max-h-[300px] overflow-y-auto'>
+									{results.map((result, index) => (
+										<div
+											key={index}
+											className='py-2 px-3 hover:bg-background/60 rounded-md cursor-pointer
+									transition-colors duration-150 ease-in-out'
+										>
+											{JSON.stringify(result)}
+										</div>
+									))}
+								</Card.Body>
+							</Card>
+						)}
 					/>
 				</Card.Body>
 			</Card>

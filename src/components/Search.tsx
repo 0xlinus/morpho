@@ -1,29 +1,30 @@
 'use client'
 
 import Input from '@/components/Input'
-import Card from '@/components/Card'
 import React, { useState, useCallback } from 'react'
 import debounce from 'lodash/debounce'
 import { Vault } from '@/types/vaults'
 
-interface SearchProps {
-	results?: Vault[]
+interface SearchProps<T> {
+	results?: T[]
 	isLoading?: boolean
 	onSearch?: (value: string) => void
 	placeholder?: string
 	debounceMs?: number
 	label?: string
 	error?: string
+	resultRenderer?: (results: T[]) => React.ReactNode
 }
 
-const Search: React.FC<SearchProps> = ({
+const Search: React.FC<SearchProps<Vault>> = ({
 	results = [],
 	isLoading,
 	onSearch,
 	placeholder = 'Search...',
 	debounceMs = 300,
 	label,
-	error
+	error,
+	resultRenderer
 }) => {
 	const [value, setValue] = useState('')
 
@@ -69,19 +70,7 @@ const Search: React.FC<SearchProps> = ({
 					}
 				`}
 			>
-				<Card className='border-borderPrimary border-[1px] min-w-[310px] max-w-[310px]'>
-					<Card.Body className='max-h-[300px] overflow-y-auto'>
-						{results.map((result, index) => (
-							<div
-								key={index}
-								className='py-2 px-3 hover:bg-background/60 rounded-md cursor-pointer
-									transition-colors duration-150 ease-in-out'
-							>
-								{JSON.stringify(result)}
-							</div>
-						))}
-					</Card.Body>
-				</Card>
+				{resultRenderer?.(results)}
 			</div>
 		</div>
 	)
