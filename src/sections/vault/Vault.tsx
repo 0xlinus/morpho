@@ -3,7 +3,7 @@ import { VaultFull } from '@/types/vaults'
 import Image from 'next/image'
 import NoVault from './NoVault'
 import Link from 'next/link'
-import { getExplorerUrl } from '@/utils/explorer'
+import { getExplorerUrl } from '@/lib/utils'
 import RefreshButton from './RefreshButton'
 
 const Vault = ({ vault }: { vault?: VaultFull }) => {
