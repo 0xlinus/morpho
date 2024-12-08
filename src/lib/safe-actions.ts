@@ -1,6 +1,6 @@
 import { InvalidAddressError } from '@/errors/InvalidAddress';
 import { NotFoundError } from '@/errors/NotFound';
-import { createSafeActionClient, DEFAULT_SERVER_ERROR_MESSAGE } from "next-safe-action";
+import { createSafeActionClient } from "next-safe-action";
 import { z } from "zod";
 
 export const baseActionClient = createSafeActionClient({
@@ -18,6 +18,6 @@ export const baseActionClient = createSafeActionClient({
       return e.message
     }
 
-    return DEFAULT_SERVER_ERROR_MESSAGE;
+    return 'Oops! Something went wrong.'
   }
 });
