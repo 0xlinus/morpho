@@ -15,7 +15,8 @@ const SearchVault = () => {
 		queryKey: ['vaults', searchValue],
 		queryFn: () => getVaultsAction({ q: searchValue }),
 		retry: false,
-		enabled: !!searchValue || !!error
+		enabled: !!searchValue || !!error,
+		placeholderData: (prev) => (searchValue ? prev : undefined)
 	})
 
 	const vaults = useMemo(() => {
