@@ -4,18 +4,24 @@ import Button from '@/components/Button'
 import Image from 'next/image'
 import { refreshVaultAction } from '@/actions/vaults'
 import { useParams } from 'next/navigation'
+import { useState, useEffect } from 'react'
 
 const RefreshButton = () => {
 	const params = useParams()
 	const chainId = params.chainId as string
 	const vaultAddress = params.vaultAddress as string
+	const [disabled, setDisabled] = useState(true)
 
 	const handleRefresh = async () => {
 		await refreshVaultAction({ chainId, address: vaultAddress })
 	}
 
+	useEffect(() => {
+		setDisabled(false)
+	}, [vaultAddress])
+
 	return (
-		<Button size='circle' onClick={handleRefresh}>
+		<Button size='circle' onClick={handleRefresh} disabled={disabled}>
 			<Image
 				src='/images/icons/double-arrow.svg'
 				alt='Refresh'
