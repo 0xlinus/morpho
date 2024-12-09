@@ -10,18 +10,18 @@ const RefreshButton = () => {
 	const params = useParams()
 	const chainId = params.chainId as string
 	const vaultAddress = params.vaultAddress as string
-	const [disabled, setDisabled] = useState(true)
+	const [mounted, setMounted] = useState(false)
 
 	const handleRefresh = async () => {
 		await refreshVaultAction({ chainId, address: vaultAddress })
 	}
 
 	useEffect(() => {
-		setDisabled(false)
-	}, [vaultAddress])
+		setMounted(true)
+	}, [])
 
 	return (
-		<Button size='circle' onClick={handleRefresh} disabled={disabled}>
+		<Button size='circle' onClick={handleRefresh} disabled={!mounted}>
 			<Image
 				src='/images/icons/double-arrow.svg'
 				alt='Refresh'
