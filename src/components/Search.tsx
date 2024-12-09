@@ -21,7 +21,7 @@ const Search: React.FC<SearchProps<Vault>> = ({
 	isLoading,
 	onSearch,
 	placeholder = 'Search...',
-	debounceMs = 300,
+	debounceMs = 500,
 	label,
 	error,
 	resultRenderer

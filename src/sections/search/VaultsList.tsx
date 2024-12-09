@@ -5,13 +5,14 @@ import Link from 'next/link'
 
 type VaultsListProps = {
 	vaults: Vault[]
+	searchValue: string
 }
 
-const VaultsList = ({ vaults }: VaultsListProps) => {
+const VaultsList = ({ vaults, searchValue }: VaultsListProps) => {
 	return (
 		<Card className='border-solid border-borderPrimary border w-[310px] min-h-[53px]'>
 			<Card.Body className='overflow-y-auto w-full py-2'>
-				{!vaults.length && (
+				{!vaults.length && searchValue && (
 					<p className='text-center text-textSecondary'>No results :(</p>
 				)}
 				{vaults.map((vault, index) => (

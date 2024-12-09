@@ -42,7 +42,9 @@ const SearchVault = () => {
 					results={vaults}
 					isLoading={isLoading}
 					error={error}
-					resultRenderer={(results) => <VaultsList vaults={results} />}
+					resultRenderer={(results) => (
+						<VaultsList vaults={results} searchValue={searchValue} />
+					)}
 				/>
 			</Card.Body>
 		</Card>
